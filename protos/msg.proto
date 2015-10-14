@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package protos;
+
+service DMap {
+  rpc Send (Message) returns (Response) {}
+  rpc Ping (HealthCheck) returns (Response) {}
+}
+
+message HealthCheck {
+  string origin = 1;
+}
+
+message Response {
+  int32 code = 1;
+}
+
+message Message {
+  string key = 1;
+  int32 opType = 2;
+  bytes value = 3;
+}
